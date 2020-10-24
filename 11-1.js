@@ -1,19 +1,22 @@
-function indexCalculation(array) {
-    let totalOddIndexes = 0;
-    let totalEvenIndexes = 0;
-    let totalZeroElements = 0;
-    array.forEach(function (meshedArrayElement, meshedArrayIndex) {
-        if (meshedArrayIndex % 2 === 0 && meshedArrayElement !== 0) {
-            totalEvenIndexes++;
-        } else if (meshedArrayIndex % 2 !== 0 && meshedArrayElement !== 0) {
-            totalOddIndexes++;
-        } else {
-            totalZeroElements++;
+function parity(array) {
+    let even = 0,
+        odd = 0,
+        zero = 0;
+    array.forEach((element) => {
+        if (typeof element === "number" && !isNaN(element)) {
+            if (element === 0) {
+                zero++;
+            } else if (element % 2 === 0) {
+                even++;
+            } else {
+                odd++;
+            }
         }
     });
-    console.log("totalOddIndexes :", totalOddIndexes);
-    console.log("totalEvenIndexes :", totalEvenIndexes);
-    console.log("totalZeroElements :", totalZeroElements);
+
+    console.log("Odd elements :", odd);
+    console.log("Even elements :", even);
+    console.log("Zero elements :", zero);
 }
 
-indexCalculation([1, "", null, 4.5, 0, null, 23]);
+parity([0, 1, 2, "", null, 0, 1, 2]);
